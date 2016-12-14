@@ -4,6 +4,7 @@ float4x4 tWV: WORLDVIEW;
 float4x4 tP: PROJECTION;
 
 float4x4 tA <string uiname="Transform";>;
+float4 tC <bool color=true;string uiname="Color";>;
 float Alpha <float uimin=0.0; float uimax=1.0;> = 1;
 Texture2D Tex <string uiname="Texture";>;
 
@@ -43,7 +44,9 @@ vs2ps VS(VSIN In)
 
 float4 PS(vs2ps In): SV_Target
 {
-	float4 col = Tex.SampleLevel(g_samLiner, In.TexCd.xy, 1);
+	float4 col = Tex.SampleLevel(g_samLiner, In.TexCd.xy, 1) * tC;
+	//col = col + tC;
+	//float4 col = tC;
 	col.a *= Alpha;
 	
 	if(col.a == 0) discard;

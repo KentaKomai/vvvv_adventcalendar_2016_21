@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
-   <PATCH nodename="C:\Users\kkomai\sourcecode\komaken\vvvv_adventcalendar_2016_21\omake3.v4p" systemname="omake3" filename="C:\Users\kkomai\sourcecode\komaken\vvvv_adventcalendar_2016_21\omake3.v4p" scrollx="75" scrolly="15">
-   <BOUNDS type="Window" left="32775" top="1830" width="15285" height="23670">
+   <PATCH nodename="C:\Users\kkomai\sourcecode\komaken\vvvv_adventcalendar_2016_21\omake3.v4p" systemname="omake3" filename="C:\Users\kkomai\sourcecode\komaken\vvvv_adventcalendar_2016_21\omake3.v4p" scrollx="75" scrolly="-360">
+   <BOUNDS type="Window" left="15135" top="4785" width="15285" height="23670">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.1.0">
    </PACK>
@@ -57,7 +57,7 @@
    </PIN>
    </NODE>
    <NODE systemname="FullscreenQuad (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\modules\FullscreenQuad (DX11.Layer).v4p" nodename="FullscreenQuad (DX11.Layer)" componentmode="Hidden" id="10">
-   <BOUNDS type="Node" left="4740" top="14910" width="100" height="100">
+   <BOUNDS type="Node" left="4620" top="13575" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Texture" visible="1" slicecount="1" values="||">
    </PIN>
@@ -419,7 +419,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="4305" top="5670" width="6000" height="4500">
    </BOUNDS>
-   <BOUNDS type="Window" left="26385" top="7080" width="6240" height="5085">
+   <BOUNDS type="Window" left="19350" top="8265" width="6240" height="5085">
    </BOUNDS>
    <PIN pinname="Texture In" visible="1" slicecount="1" values="||">
    </PIN>
@@ -887,6 +887,8 @@
    </PIN>
    <PIN pinname="Amplitude" slicecount="1" values="0.04">
    </PIN>
+   <PIN pinname="Enabled" visible="1" slicecount="1" values="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="45" srcpinname="Texture Out" dstnodeid="78" dstpinname="Texture In">
    </LINK>
@@ -1006,6 +1008,8 @@
    <PIN pinname="Texture Out" visible="1">
    </PIN>
    <PIN pinname="Width" slicecount="1" values="0.63">
+   </PIN>
+   <PIN pinname="Enabled" visible="1" slicecount="1" values="0.340745289048011">
    </PIN>
    </NODE>
    <LINK srcnodeid="45" srcpinname="Texture Out" dstnodeid="102" dstpinname="Texture In">
@@ -1177,5 +1181,77 @@
    <LINK srcnodeid="118" srcpinname="Y Output Value" dstnodeid="117" dstpinname="Input 2">
    </LINK>
    <LINK srcnodeid="117" srcpinname="Output" dstnodeid="114" dstpinname="Opacity">
+   </LINK>
+   <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="119">
+   <BOUNDS type="Node" left="4650" top="14310" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4650" top="14310" width="6000" height="4500">
+   </BOUNDS>
+   <BOUNDS type="Window" left="3105" top="2160" width="16995" height="12075">
+   </BOUNDS>
+   <PIN pinname="Layers" visible="1">
+   </PIN>
+   <PIN pinname="Enabled" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="10" srcpinname="Layer" dstnodeid="119" dstpinname="Layers">
+   </LINK>
+   <NODE systemname="MainLoop (VVVV)" nodename="MainLoop (VVVV)" componentmode="Hidden" id="-6">
+   <BOUNDS type="Node" left="11685" top="11160" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Maximum background fpsS" visible="1">
+   </PIN>
+   <PIN pinname="Maximum forground fps" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="120">
+   <BOUNDS type="Node" left="11955" top="9585" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="11955" top="9585" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="1" values="60">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="120" srcpinname="Y Output Value" dstnodeid="-6" dstpinname="Maximum background fpsS">
+   </LINK>
+   <LINK srcnodeid="120" srcpinname="Y Output Value" dstnodeid="-6" dstpinname="Maximum forground fps">
+   </LINK>
+   <NODE systemname="S+H (Animation)" nodename="S+H (Animation)" componentmode="Hidden" id="121">
+   <BOUNDS type="Node" left="11220" top="13275" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="LFO (Animation)" nodename="LFO (Animation)" componentmode="Hidden" id="124">
+   <BOUNDS type="Node" left="3885" top="8610" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Change" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Period" slicecount="1" values="0.11">
+   </PIN>
+   </NODE>
+   <NODE systemname="Noise (DX11.TextureFX)" filename="%VVVV%\packs\dx11\nodes\texture11\Source\Noise.tfx" nodename="Noise (DX11.TextureFX)" componentmode="Hidden" id="125">
+   <BOUNDS type="Node" left="8655" top="13515" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Texture Out" visible="1">
+   </PIN>
+   <PIN pinname="Default SizeXY" slicecount="2" values="512,512">
+   </PIN>
+   </NODE>
+   <NODE systemname="Preview (DX11.Texture)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Preview (DX11.Texture)" componentmode="InABox" id="126">
+   <BOUNDS type="Node" left="8550" top="14340" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8550" top="14340" width="6000" height="4500">
+   </BOUNDS>
+   <BOUNDS type="Window" left="26055" top="18045" width="6240" height="5085">
+   </BOUNDS>
+   <PIN pinname="Texture In" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="125" srcpinname="Texture Out" dstnodeid="126" dstpinname="Texture In">
    </LINK>
    </PATCH>

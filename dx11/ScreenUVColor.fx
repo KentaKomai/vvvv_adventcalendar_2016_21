@@ -4,6 +4,7 @@
 //@credits: 
 
 Texture2D texture2d <string uiname="Texture";>;
+Texture2D randomVector <string uiname="RandomTexture";>;
 float distortion <string uiname="Mesh Distortion Ratio";>;
 
 SamplerState linearSampler : IMMUTABLE
@@ -68,8 +69,11 @@ void GSScene( triangleadj vs2ps input[6], inout TriangleStream<vs2ps> OutputStre
 	
     for( i=0; i<3; i++ )
     {
-        float4 newpos = mul(input[i].WPos, 5.0f);
+    	//float4 vec = texture2d.Sample(linearSampler, float2(0,0));
+    	//float4 vec = randomVector.Sample(linearSampler, float2(0,0));
+        float4 newpos = input[i].WPos * float4(2,2,2,1);
     	output.PosWVP = mul(newpos, mul(tW,tVP));
+    	//output.PosWVP = mul(output.PosWVP, float4(vec.xyz, 1));
         output.TexCd = input[i].TexCd;
     	output.Pos = input[i].Pos * 2.0f;
         
